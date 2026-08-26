@@ -102,12 +102,20 @@ def generate_post(campaign, keyword):
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>'''
 
-    lines = final_text.split('\\n')
+    cpa_button_mid = f'''
+<div style="margin: 30px 0; padding: 20px; text-align: center; border: 2px dashed #ff5722; border-radius: 8px; background-color: #fff9f7;">
+    <h3 style="color: #ff5722; margin-bottom: 10px;">⚡ {campaign['name']} - 기간 한정 혜택 안내</h3>
+    <p style="font-size: 16px; margin-bottom: 15px; color: #333;">{campaign['benefits']}</p>
+    <a href="{campaign['link']}" target="_blank" style="display: inline-block; padding: 12px 25px; background-color: #ff5722; color: white; font-size: 18px; font-weight: bold; text-decoration: none; border-radius: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">👉 내 지원자격 1초만에 확인하기</a>
+</div>
+'''
+
+    lines = final_text.split('\n')
     if len(lines) > 10:
-        mid_idx = len(lines) // 2
-        final_text = "\\n".join(lines[:mid_idx]) + "\\n" + ad_middle + "\\n" + "\\n".join(lines[mid_idx:])
+        mid_idx = len(lines) // 3  # Place it roughly after the introduction (1/3rd of the way down)
+        final_text = "\n".join(lines[:mid_idx]) + "\n" + cpa_button_mid + "\n" + ad_middle + "\n" + "\n".join(lines[mid_idx:])
         
-    final_text = ad_top + "\\n" + final_text
+    final_text = ad_top + "\n" + final_text
 
     return final_text
 
