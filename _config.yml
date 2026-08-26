@@ -1,0 +1,13 @@
+title: "유망 자격증 및 취업 정보센터"
+email: ""
+description: >-
+  40대 50대 중장년층 일자리, 평생직업, 국가/민간 유망 자격증 취득 및 국비 지원 혜택 정보를 제공합니다.
+baseurl: ""
+url: "https://blog-job.enjoy-onepage.com"
+twitter_username: ""
+github_username: "somsoo"
+theme: minima
+markdown: kramdown
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
