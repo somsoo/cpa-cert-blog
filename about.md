@@ -1,4 +1,4 @@
-﻿---
+---
 layout: page
 title: 사이트 소개 (About)
 permalink: /about/

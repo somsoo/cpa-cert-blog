@@ -1,4 +1,4 @@
-﻿---
+---
 layout: page
 title: 문의하기 (Contact)
 permalink: /contact/
