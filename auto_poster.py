@@ -127,8 +127,17 @@ def main():
         filename = f'_posts/{date_str}-{safe_title}.md'
         
         os.makedirs('_posts', exist_ok=True)
+        
+        frontmatter = f"""---
+layout: post
+title: "{keyword}"
+date: {date_str}
+---
+
+"""
+        
         with open(filename, 'w', encoding='utf-8') as f:
-            f.write(post_content)
+            f.write(frontmatter + post_content)
         print(f'Successfully generated {filename}')
     else:
         print('Failed to generate post.')
