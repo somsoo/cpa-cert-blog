@@ -112,7 +112,7 @@ def generate_post(campaign, keyword):
     return final_text
 
 def main():
-    with open('campaigns.json', 'r', encoding='utf-8') as f:
+    with open('campaigns.json', 'r', encoding='utf-8-sig') as f:
         campaigns = json.load(f)
     
     campaign = random.choice(campaigns)
