@@ -126,6 +126,7 @@ def main():
         safe_title = keyword.replace(' ', '-')
         filename = f'_posts/{date_str}-{safe_title}.md'
         
+        os.makedirs('_posts', exist_ok=True)
         with open(filename, 'w', encoding='utf-8') as f:
             f.write(post_content)
         print(f'Successfully generated {filename}')
