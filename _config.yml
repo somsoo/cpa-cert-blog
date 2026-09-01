@@ -11,3 +11,7 @@ markdown: kramdown
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+
+# [트래픽 및 검색엔진 최적화]
+google_analytics: ""
+google_search_console: ""
