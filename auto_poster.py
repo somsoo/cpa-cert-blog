@@ -103,20 +103,27 @@ def create_text_thumbnail(text, filename_prefix):
     img.save(img_path, 'WEBP', quality=90)
     return img_path
 
-def download_vibe_image(prompt, filename_prefix):
+def get_pixabay_images(prompt, count=3):
+    import urllib.parse
     os.makedirs('assets/images', exist_ok=True)
-    img_path = f'assets/images/{filename_prefix}.jpg'
-    keywords = ','.join([p.strip().replace(' ', '') for p in prompt.split(',')])
-    url = f"https://loremflickr.com/800/500/{keywords}/all"
+    key = '57366919-c2774ae5199cc6a6cdb9a301d'
+    query = urllib.parse.quote(prompt)
+    url = f"https://pixabay.com/api/?key={key}&q={query}&image_type=photo&orientation=horizontal&per_page={count+2}"
+    paths = []
     try:
-        r = requests.get(url, timeout=10, allow_redirects=True)
-        if r.status_code == 200:
+        r = requests.get(url, timeout=10)
+        data = r.json()
+        hits = data.get('hits', [])
+        for i, hit in enumerate(hits[:count]):
+            img_url = hit['webformatURL']
+            img_path = f'assets/images/pixabay_{int(time.time())}_{i}.jpg'
+            img_r = requests.get(img_url, timeout=10)
             with open(img_path, 'wb') as f:
-                f.write(r.content)
-            return img_path
+                f.write(img_r.content)
+            paths.append(img_path)
     except Exception as e:
-        print(f"Vibe image failed: {e}")
-    return ""
+        print(f"Pixabay failed: {e}")
+    return paths
 
 def generate_post():
     # [Pass 4: Thumbnail Catchphrase]
@@ -192,9 +199,7 @@ Topic: {best_keyword}
 단, [DYNAMIC_BUTTON_TEXT] 부분을 문맥에 맞게 매력적인 문구(예: 무료 상담 신청하기, 혜택 확인하기 등)로 수정해서 넣으세요.
 {button_html}
 
-[시각적 강조 규칙 - 반드시 적용]
-1. 본문 중간에 딱 1번 아래의 감성 사진 마크다운을 본문과 가장 자연스러운 위치에 줄바꿈하여 삽입하세요.
-{vibe_markdown}
+
 """
     final_text = generate_with_retry(rewrite_prompt).strip()
     final_text = re.sub(r'^---.*?---\s*', '', final_text, flags=re.DOTALL)
