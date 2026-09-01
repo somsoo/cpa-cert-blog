@@ -251,7 +251,7 @@ Topic: {best_keyword}
     final_body = image_markdown + ad_top + "\n\n" + body_content + "\n\n" + ad_bottom
     return title, final_body
 
-def save_post(title, body):
+def save_post(title, body, thumb_rel_path):
     now = datetime.utcnow()
     date_str = now.strftime("%Y-%m-%d")
     time_str = now.strftime("%Y-%m-%d %H:%M:%S")
@@ -268,5 +268,5 @@ def save_post(title, body):
         f.write(frontmatter)
 
 if __name__ == "__main__":
-    title, body = generate_post()
-    save_post(title, body)
+    title, body, thumb = generate_post()
+    save_post(title, body, thumb)
