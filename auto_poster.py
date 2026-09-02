@@ -103,27 +103,59 @@ def create_text_thumbnail(text, filename_prefix):
     img.save(img_path, 'WEBP', quality=90)
     return img_path
 
-def get_pixabay_images(prompt, count=3):
+def download_vibe_image(prompt, filename_prefix):
     import urllib.parse
     os.makedirs('assets/images', exist_ok=True)
     key = '57366919-c2774ae5199cc6a6cdb9a301d'
     query = urllib.parse.quote(prompt)
-    url = f"https://pixabay.com/api/?key={key}&q={query}&image_type=photo&orientation=horizontal&per_page={count+2}"
-    paths = []
+    url = f"https://pixabay.com/api/?key={key}&q={query}&image_type=photo&orientation=horizontal&per_page=3"
     try:
         r = requests.get(url, timeout=10)
         data = r.json()
         hits = data.get('hits', [])
-        for i, hit in enumerate(hits[:count]):
-            img_url = hit['webformatURL']
-            img_path = f'assets/images/pixabay_{int(time.time())}_{i}.jpg'
-            img_r = requests.get(img_url, timeout=10)
+        if not hits: return ""
+        hit = random.choice(hits[:3])
+        img_url = hit['webformatURL']
+        img_r = requests.get(img_url, timeout=10)
+        try:
+            image = Image.open(io.BytesIO(img_r.content))
+            base_width = 800
+            if image.size[0] > base_width:
+                wpercent = (base_width / float(image.size[0]))
+                hsize = int((float(image.size[1]) * float(wpercent)))
+                image = image.resize((base_width, hsize), Image.Resampling.LANCZOS)
+            img_path = f'assets/images/{filename_prefix}.webp'
+            image.save(img_path, 'WEBP', quality=85)
+            return img_path
+        except:
+            img_path = f'assets/images/{filename_prefix}.jpg'
             with open(img_path, 'wb') as f:
                 f.write(img_r.content)
-            paths.append(img_path)
+            return img_path
     except Exception as e:
         print(f"Pixabay failed: {e}")
-    return paths
+        return ""
+        hit = random.choice(hits[:3])
+        img_url = hit['webformatURL']
+        img_r = requests.get(img_url, timeout=10)
+        try:
+            image = Image.open(io.BytesIO(img_r.content))
+            base_width = 800
+            if image.size[0] > base_width:
+                wpercent = (base_width / float(image.size[0]))
+                hsize = int((float(image.size[1]) * float(wpercent)))
+                image = image.resize((base_width, hsize), Image.Resampling.LANCZOS)
+            img_path = f'assets/images/{filename_prefix}.webp'
+            image.save(img_path, 'WEBP', quality=85)
+            return img_path
+        except:
+            img_path = f'assets/images/{filename_prefix}.jpg'
+            with open(img_path, 'wb') as f:
+                f.write(img_r.content)
+            return img_path
+    except Exception as e:
+        print(f"Pixabay failed: {e}")
+        return ""
 
 def generate_post():
     # [Pass 4: Thumbnail Catchphrase]
@@ -153,8 +185,9 @@ Topic: {best_keyword}
     except:
         vibe_keywords = "interior,clean"
         
-    vibe_rel_path = download_vibe_image(vibe_keywords, f"vibe_{int(time.time())}")
-    vibe_markdown = f"![감성사진]({{{{ '/' | append: '{vibe_rel_path}' | relative_url }}}})" if vibe_rel_path else ""
+    safe_keyword = "".join(c if c.isalnum() else "-" for c in best_keyword).strip("-")
+    vibe_rel_path = download_vibe_image(vibe_keywords, f"{safe_keyword}-vibe-{int(time.time())}")
+    vibe_markdown = f"![{best_keyword} 관련 이미지 (출처: 픽사베이)]({{{{ '/' | append: '{vibe_rel_path}' | relative_url }}}})" if vibe_rel_path else ""
 
     # [Pass 1: Draft]
     draft_prompt = f"""
@@ -256,7 +289,7 @@ Topic: {best_keyword}
         body_content = final_text
         
     final_body = image_markdown + ad_top + "\n\n" + body_content + "\n\n" + ad_bottom
-    return title, final_body
+    return title, final_body, thumb_rel_path
 
 def save_post(title, body, thumb_rel_path):
     now = datetime.utcnow()
