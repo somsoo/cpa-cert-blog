@@ -1,7 +1,7 @@
 name: Auto Publish
 on:
   schedule:
-    - cron: '43 3,16 * * *'
+    - cron: '29 2,10,17 * * *'
   workflow_dispatch:
 
 jobs:
