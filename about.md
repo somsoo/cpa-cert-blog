@@ -1,22 +1,47 @@
 ---
-layout: page
-title: 사이트 소개 (About)
+layout: default
+title: "사이트 소개"
 permalink: /about/
 ---
 
-# 유망 자격증 및 취업 정보센터에 오신 것을 환영합니다.
+<div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-10 md:p-12 mt-6">
+  <div class="border-b border-gray-100 pb-6 mb-8">
+    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">About Us</span>
+    <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-2">유망 자격증 및 취업 정보센터 소개</h1>
+    <p class="text-gray-500 mt-2 text-sm sm:text-base leading-relaxed">유망 자격증 취득 가이드 및 국가공인 자격증 시험일정, 합격 전략과 취업 정보를 제공합니다.</p>
+  </div>
 
-저희 사이트는 100세 시대를 맞이하여, 제2의 인생을 준비하시는 **40대, 50대 이상의 중장년층 및 구직자분들을 위한 핵심 취업 정보와 유망 자격증 정보**를 큐레이션하여 제공하는 전문 정보 웹진입니다.
+  <div class="prose prose-blue max-w-none text-gray-700 leading-relaxed space-y-6">
+    <h2 class="text-xl font-bold text-gray-900 border-l-4 border-blue-600 pl-3">1. 사이트 운영 목적 및 비전</h2>
+    <p>
+      <strong>유망 자격증 및 취업 정보센터</strong>는 현대 정보 과잉 시대 속에서 독자 여러분께 실질적인 도움이 되는 핵심 정보를 정제하여 전달하는 <strong>전문 정보 큐레이션 포털</strong>입니다.
+    </p>
+    <p>
+      수많은 광고와 파편화된 인터넷 자료 속에서 겪는 정보 탐색의 피로도를 낮추고, 신뢰할 수 있는 정확한 데이터와 명쾌한 가이드를 제공함으로써 독자 여러분의 현명한 선택을 지원합니다.
+    </p>
 
-### 💡 설립 목적
-정보의 홍수 속에서, 실제로 취업에 도움이 되고 국비 지원 혜택을 받을 수 있는 '진짜 정보'를 찾기란 쉽지 않습니다. 
-저희는 여러분의 소중한 시간과 비용을 절약해 드리기 위해, 공신력 있는 교육 기관과 정부 지원 혜택(수강료 전액 지원, 취업 지원금 등)이 연계된 우수 자격증 및 일자리 정보만을 엄선하여 상세히 분석해 드립니다.
+    <h2 class="text-xl font-bold text-gray-900 border-l-4 border-blue-600 pl-3">2. 콘텐츠 작성 및 편집 원칙 (Editorial Guidelines)</h2>
+    <ul class="list-disc pl-5 space-y-2">
+      <li><strong>공식 데이터 기반 교차 검증:</strong> 공공기관, 주관 기관, 공식 협회 및 제조사의 공식 발표 자료를 우선적으로 분석하여 신뢰도 높은 정보를 제공합니다.</li>
+      <li><strong>독자 중심의 실용성 추구:</strong> 복잡한 절차나 어려운 전문 용어를 알기 쉽게 해설하고, 실제로 적용 가능한 실천 팁을 제공합니다.</li>
+      <li><strong>객관성과 투명성 견지:</strong> 서비스나 제품의 장점뿐만 아니라 유의해야 할 사항이나 단점도 균형 있게 다룹니다.</li>
+      <li><strong>주기적인 최신화:</strong> 정책, 시험 일정, 행사 정보, 시장 변동 등 변경되는 최신 사항을 상시 점검하여 콘텐츠를 갱신합니다.</li>
+    </ul>
 
-### 🔍 주요 다루는 분야
-* **중장년층 유망 직종:** 간병사, 요양보호사, 사회복지사 등 평생 직업 정보
-* **안정적인 고수익 자격증:** 손해평가사, 경비지도사, 주택관리사 등
-* **국비 및 교육 혜택:** 취업 지원금, 수강료 면제 혜택 조회 및 신청 가이드
+    <h2 class="text-xl font-bold text-gray-900 border-l-4 border-blue-600 pl-3">3. 투명성 및 제휴 공시 (Affiliate Transparency)</h2>
+    <p>
+      본 사이트는 독자 여러분께 무료로 양질의 정보를 지속 제공하기 위해 일부 게시물에 합법적인 제휴 마케팅 프로그램(텐핑, 쿠팡 파트너스 등)의 링크를 포함할 수 있습니다. 
+      공정거래위원회의 '추천·보증 등에 관한 표시·광고 심사지침'을 엄격히 준수하며, 해당 링크를 통해 신청 또는 구매가 이루어지더라도 <strong>독자님께 추가되는 비용은 일절 발생하지 않습니다.</strong>
+    </p>
 
-저희가 제공하는 모든 정보는 독자 여러분이 안전하게 비교하고 선택하실 수 있도록, 검증된 공식 제휴 파트너사의 무료 상담 및 혜택 안내 링크를 함께 제공하고 있습니다.
-
-여러분의 새로운 시작과 성공적인 재취업을 진심으로 응원합니다.
+    <h2 class="text-xl font-bold text-gray-900 border-l-4 border-blue-600 pl-3">4. 피드백 및 문의 안내</h2>
+    <p>
+      독자 여러분의 피드백은 사이트 운영의 가장 소중한 밑거름입니다. 내용의 오류 제보, 보완 요청, 제휴 및 권리 침해 관련 문의는 언제든지 아래로 연락 주시기 바랍니다.
+    </p>
+    <div class="bg-gray-50 rounded-xl p-5 border border-gray-200 text-sm text-gray-600">
+      <p class="font-semibold text-gray-800 mb-1">📬 독자 지원 센터</p>
+      <p>이메일: <strong>contact@enjoy-onepage.com</strong></p>
+      <p class="text-xs text-gray-500 mt-1">※ 접수된 문의는 영업일 기준 48시간 이내에 성실히 검토 후 회신드립니다.</p>
+    </div>
+  </div>
+</div>
