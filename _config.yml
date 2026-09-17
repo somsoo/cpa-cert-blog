@@ -9,3 +9,11 @@ markdown: kramdown
 plugins:
   - jekyll-feed
   - jekyll-sitemap
+permalink: /:year/:month/:day/:title/
+exclude:
+  - AI_MAINTENANCE_RULES.md
+  - POST_LOG.md
+  - used_keywords.txt
+  - Gemfile
+  - Gemfile.lock
+  - README.md
